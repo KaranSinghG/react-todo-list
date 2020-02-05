@@ -36,13 +36,20 @@ class App extends Component {
     });
   };
   handleDelete = id => {
-    const filteredItems = this.state.items.filter(item => item.id != id);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
     this.setState({
       items: filteredItems
     });
   };
   handleEdit = id => {
-    console.log(`handle edit ${id}`);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+    this.setState({
+      item: selectedItem.title,
+      items: filteredItems,
+      id: id,
+      editItem: true
+    });
   };
   render() {
     return (
